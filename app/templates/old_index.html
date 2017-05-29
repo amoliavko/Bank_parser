@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Загрузите файл</h2>
+
+        {% if args["method"] == "POST" %}
+        {% if args["file_size_error"] %}
+            <h1>Размер файла превышает 50Mb!</h1>
+        {% else %}
+            <h1>Файл успешно загружен.</h1>
+        {% endif %}
+    {% endif %}
+    <form action="/" method="POST" enctype="multipart/form-data">
+
+        <table>
+            <tr><td>Файл:</td>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <td><input type="file" name="file" multiple=""/></td></tr>
+            <tr><td>Банк:</td>
+                <td><select name="name">
+                    <option value="Aval">Аваль</option>
+                    <option value="Avangard">Авангард</option>
+                    <option value="Bsbbank">БСБ Банк</option>
+                    <option value="Centercredit">Центр Кредит</option>
+                    <option value="Privat">Приват</option>
+                    <option value="Procreditbank">ПроКредит Банк</option>
+                    <option value="Vtb">ВТБ</option>
+                    <option value="BsbbankForeign">БСБ Банк Валюта</option>
+                    <!--<option value="Alfa">Альфа Банк</option>-->
+                    <option value="Oshchad">ОщадБанк</option>
+                    <option value="UkrExim">УркЕкзим</option>
+                    <option value="PaymentSystem">Платіжні системи</option>
+                </select></td></tr>
+                {{form.bank_select}}
+
+            <tr><td></td><td><input type="submit" value="Загрузить" /></td></tr>
+        </table>
+
+                <p><input type="submit" value="Отправить">
+                <input type="reset" value="Очистить"></p>
+    </form>
+
+</body>
+</html>
