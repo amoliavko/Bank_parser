@@ -15,16 +15,14 @@
             {% endif %}
         {% endif %}
 
-        <form action="/" method="POST" enctype="multipart/form-data">
+        <form action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <table>
-                        <tr><td>Файл:</td> <td><input type="file" name="file" multiple=""/></td></tr>
+                        <tr><td>Файл:</td> <td><input type="file" name="file"/></td></tr>
                         <tr><td>Банк:</td> <td> {{form.bank_select}} <input type="submit" value="Загрузить" /></td></tr>
                         <tr><td><br></td></tr>
                         <tr><td><input type="submit" value="Отправить"></td> <td><input type="reset" value="Очистить"></td></tr>
                 </table>
         </form>
-
-
 </body>
 </html>

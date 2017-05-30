@@ -5,14 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-        <p>Load is good</p>
-        {{bank_select}}
+        <p>Life is good</p>
+        {{bank_select}}<br>
         {{file}}
 
         <form action="/" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <table>
-                        <tr><td><a href="{{ url_for('download', filename=probleme.facture) }}">Facture</a></td><tr>
+                        <tr><td><a href= "{{ file }}" download="result.txt">Download</a></td><tr>
                         <tr><td><input type="submit" value="Отправить"></td> <td><input type="reset" value="Очистить"></td></tr>
                 </table>
         </form>
