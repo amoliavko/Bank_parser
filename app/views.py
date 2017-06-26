@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, send_from_directory
 from app import app
 from app.form import LoadFile
-from pandas import read_csv, read_excel
+from pandas import read_csv, read_excel, read_table
 import os
 from werkzeug.utils import secure_filename
 

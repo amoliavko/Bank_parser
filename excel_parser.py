@@ -10,6 +10,7 @@ start_k = [[x, y] for y in range(len(lf1)) for x in lf1.keys() if ('РЕЄСТР
 start_d = [[x, y] for y in range(len(lf1)) for x in lf1.keys() if ('РЕЄСТР дебетових документів' in str(lf1[x][y]))]
 finish = [[x, y] for y in range(len(lf1)) for x in lf1.keys() if ('Одержано:' in str(lf1[x][y]))]
 
+
 bank = 'Oshchad'
 rahunok = [x for x in lf1['Unnamed: 3'] if ('по рахунку' in str(x))]
 invoice = rahunok[0].rsplit()[2]
@@ -19,6 +20,7 @@ print(start_k, start_d, finish, sep='\n')
 
 
 def find_data(start_pos, finish_pos):
+    bank = 'Bank'
     for i in range(int(start_pos[0][1]), int(finish_pos[1])):
         if 'проведено банком:' in str(lf1['Unnamed: 2'][i]):
             date = lf1['Unnamed: 5'][i]
@@ -28,14 +30,14 @@ def find_data(start_pos, finish_pos):
             purpose = lf1['Unnamed: 5'][i]
         if 'платник:' in str(lf1['Unnamed: 2'][i]):
             payer = lf1['Unnamed: 5'][i]
-    return date, sum, purpose, payer
+    return bank, date, sum, purpose, payer,
 
 out_list = find_data(start_k, finish[0])
 
 
 wf1 = DataFrame()
-df = DataFrame(columns=('Банк', 'Дата', 'Дебет', 'Кредит'))
-#df = DataFrame(columns=('Банк', 'Дата', 'Дебет', 'Кредит', 'Валюта', 'Назначение', 'Агент', 'Счет'))
+# df = DataFrame(columns=('Банк', 'Дата', 'Дебет', 'Кредит'))
+df = DataFrame(columns=('Банк', 'Дата', 'Дебет', 'Кредит', 'Валюта', 'Назначение', 'Агент', 'Счет'))
 # df.loc[1]=''
 # df.loc[2]=''
 # df.loc[3]=''
@@ -46,6 +48,7 @@ df = DataFrame(columns=('Банк', 'Дата', 'Дебет', 'Кредит'))
 # df = df.set_value(2,'Дата', 555)
 for i in range(5):
     df.loc[i] = out_list
+
 
 df.to_excel("/media/a_m/Wdisk/Python/Projects/Bank_parser/example/txt_out.xlsx")
 #wf1.to_excel("/media/a_m/Wdisk/Python/Projects/Bank_parser/example/txt_out.xls")
