@@ -9,7 +9,7 @@
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <table>
                         <tr><td><a href= "{{link}}" download=result.xlsx>Скачать</a></td>
-                        <td><input type="submit" value="Очистить"></td></tr>
+                        <td><a href="{{url_for('index')}}">На главную</a></td></tr>
                 </table>
         </form>
 
