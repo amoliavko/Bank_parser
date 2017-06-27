@@ -1,6 +1,7 @@
 import re
+import statics
 
-PaymentSystemFile = '/media/a_m/Wdisk/Python/Projects/Bank_parser/example/clean (copy)/Платежные сисетмы.txt'
+PaymentSystemFile = 'statics/Платежные сисетмы.txt'
 PaymentSystemOpenFile = open(PaymentSystemFile, 'r')
 
 count = 0
