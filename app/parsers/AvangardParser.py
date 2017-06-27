@@ -22,9 +22,11 @@ def file_parser(file):
         if str(i).startswith('Итого:'):
             finishPos -= 1
             break
-
+    del_list = ['nan', 'Дата док-та']
     AvangardDataFrame = AvangardDataFrame.iloc[startPos:finishPos]
     AvangardDataFrame = pd.DataFrame(AvangardDataFrame[['ПАО АКБ "АВАНГАРД"', 'Unnamed: 26', 'Unnamed: 29', 'Unnamed: 31', 'Unnamed: 21']])
+    AvangardDataFrame = AvangardDataFrame[~AvangardDataFrame['ПАО АКБ "АВАНГАРД"'].isin(del_list)]
+
     AvangardList = [list(x) for x in AvangardDataFrame.to_records(index=False)]
 
     for i in range(len(AvangardList)):
@@ -38,7 +40,9 @@ def file_parser(file):
         AvangardList[i][1] = AvangardList[i][1].split()[0]
         for j in range(len(AvangardList[i])):
             if str(AvangardList[i][j]) == 'nan':
-                AvangardList[i][j] = 0.0
+                AvangardList[i][j] = ''
             AvangardList[i][j] = str(AvangardList[i][j]).replace(',','')
+
+
 
     return AvangardList

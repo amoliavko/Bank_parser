@@ -28,8 +28,8 @@ AvangardDataFrame.to_excel(writer, sheet_name='Sheet1', index=False)
 writer.save()
 
 
-print(startPos, finishPos)
-print(AvangardDataFrame)
+# print(startPos, finishPos)
+# print(AvangardDataFrame)
 # acc_pos=0
 # out=''
 # for i in df[df.columns[12]]:
@@ -99,3 +99,9 @@ print(AvangardDataFrame)
 #
 # for i in AvangardList:
 #        print(i)
+
+
+a = ['nan', 'Дата док-та']
+df = AvangardDataFrame[~AvangardDataFrame['ПАО АКБ "АВАНГАРД"'].isin(a)]
+
+print(df)
