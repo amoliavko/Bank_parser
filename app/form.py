@@ -24,7 +24,7 @@ class LoadFile(FlaskForm):
                     ('Procreditbank', 'ПроКредит Банк'),
                     ('Vtb', 'ВТБ'),
                     ('BsbbankForeign', 'БСБ Банк Валюта'),
-                    ('Alfa', 'Альфа Банк'),
+                    # ('Alfa', 'Альфа Банк'),
                     ('Oshchad', 'ОщадБанк'),
                     ('UkrExim', 'УркЕкзим'),
                     ('PaymentSystem', 'Платіжні системи')])

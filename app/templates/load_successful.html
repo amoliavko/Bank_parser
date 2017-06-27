@@ -5,16 +5,33 @@
     <title>Title</title>
 </head>
 <body>
-        <p>Life is good</p>
-        {{bank_select}}<br>
-        {{file}}
-
         <form action="/" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                 <table>
-                        <tr><td><a href= "{{ file }}" download="result.txt">Download</a></td><tr>
-                        <tr><td><input type="submit" value="Отправить"></td> <td><input type="reset" value="Очистить"></td></tr>
+                        <tr><td><a href= "{{link}}" download=result.xlsx>Скачать</a></td>
+                        <td><input type="submit" value="Очистить"></td></tr>
                 </table>
         </form>
+
+            <table>
+                <tr><td>Банк</td>
+                    <td>Дата</td>
+                    <td>Дебет</td>
+                    <td>Кредит</td>
+                    <td>Валюта</td>
+                    <td>Назначение</td>
+                    <td>Агент</td>
+                    <td>Счет</td>
+                    <td>ЄДРПОУ</td>
+                </tr>
+
+                {% for line in file %}
+                <tr>
+                {% for string in line %}
+                <td>{{ string }}</td>
+                {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
 </body>
 </html>
