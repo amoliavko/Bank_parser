@@ -4,7 +4,7 @@ from app.form import LoadFile
 import pandas as pd
 import os
 from werkzeug.utils import secure_filename
-from app.parsers import BcbParser, BcbForeignParser, ProcreditbankParser, AvalParser, Centercredit, PrivatParser, UkrEximParser, VtbParser
+from app.parsers import BcbParser, BcbForeignParser, ProcreditbankParser, AvalParser, Centercredit, PrivatParser, UkrEximParser, VtbParser, AvangardParser
 
 
 MAX_FILE_SIZE = 1024 * 1024 * 50 + 1
@@ -54,6 +54,9 @@ def index():
                 elif bank_select =='UkrExim':
                     out = UkrEximParser.file_parser(file_address)
 
+                elif bank_select =='Avangard':
+                    out = AvangardParser.file_parser(file_address)
+
                 else:
                     return render_template("index.html", args=args, form=form)
 
@@ -67,5 +70,4 @@ def index():
                 link = os.path.join('static', 'result.xlsx')
 
                 return render_template("load_successful.html", file=out, link=link)
-
     return render_template("index.html", args=args, form=form)
