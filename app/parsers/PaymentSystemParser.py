@@ -1,8 +1,7 @@
 import re
 import datetime as date
 
-# def file_parser(file):
-def file_parser():
+def file_parser(file):
 
     bank = 'PaymentSystem'
     curr = 'UAH'
@@ -10,7 +9,7 @@ def file_parser():
     count=0
     paymentList = []
     PaySystemList = []
-    openFile = open('/home/user/Playground/Projects/BankParser/Bank_parser/app/static/Ощад.xlsx', 'r', encoding = 'cp1251')
+    openFile = open(file, 'r')
 
     for i in openFile:
         account = re.search('Р/с пред.:\s+(\d+)', i)
@@ -47,15 +46,21 @@ def file_parser():
         PaySystemList[i].insert(4,curr)
 
     for i in range(len(PaySystemList)):
-            PaySystemList[i][2] = str(PaySystemList[i][2]).replace(',','.')
-            PaySystemList[i][3] = str(PaySystemList[i][3]).replace(',','.')
+        PaySystemList[i][2] = str(PaySystemList[i][2]).replace(',','.')
+        PaySystemList[i][3] = str(PaySystemList[i][3]).replace(',','.')
+        for j in range(len(PaySystemList[i])):
+            PaySystemList[i][j] = re.sub('\s+',' ',PaySystemList[i][j])
 
+
+    openFile.close()
     return PaySystemList
 
 
 
 if __name__== '__main__':
-    file = '/home/user/Playground/Projects/BankParser/Bank_parser/app/static/Ощад.xlsx'
-    list = file_parser()
-    for i in list:
+    file = '/home/user/Playground/Projects/BankParser/Bank_parser/app/static/Платежные сисетмы.txt'
+    PaySystemList = file_parser(file)
+    for i in PaySystemList:
         print(i)
+
+

@@ -60,6 +60,9 @@ def index():
                 elif bank_select =='PaymentSystem':
                     out = PaymentSystemParser.file_parser(file_address)
 
+                elif bank_select =='Oshchad':
+                    out = OschadParser.file_parser(file_address)
+
                 else:
                     return render_template("index.html", args=args, form=form)
 

@@ -3,6 +3,7 @@ import re
 def file_parser(file):
 
     BcbOpenFile = open(file, 'r', encoding='cp1251')
+    # BcbOpenFile = open(file, 'r', encoding='cp1251')
     data = contr = debet = credit = curr = purp = acc = edrp = ''
     bank = 'BSBBank'
     count = 0
