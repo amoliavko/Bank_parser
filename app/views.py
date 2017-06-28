@@ -4,7 +4,7 @@ from app.form import LoadFile
 import pandas as pd
 import os
 from werkzeug.utils import secure_filename
-from app.parsers import BcbParser, BcbForeignParser, ProcreditbankParser, AvalParser, Centercredit, PrivatParser, UkrEximParser, VtbParser, AvangardParser
+from app.parsers import BcbParser, BcbForeignParser, ProcreditbankParser, AvalParser, Centercredit, PrivatParser, UkrEximParser, VtbParser, AvangardParser, PaymentSystemParser
 
 
 MAX_FILE_SIZE = 1024 * 1024 * 50 + 1
@@ -56,6 +56,9 @@ def index():
 
                 elif bank_select =='Avangard':
                     out = AvangardParser.file_parser(file_address)
+
+                elif bank_select =='PaymentSystem':
+                    out = PaymentSystemParser.file_parser(file_address)
 
                 else:
                     return render_template("index.html", args=args, form=form)
