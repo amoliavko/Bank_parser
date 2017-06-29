@@ -4,7 +4,7 @@ from app.form import LoadFile
 import pandas as pd
 import os
 from werkzeug.utils import secure_filename
-from app.parsers import BcbParser, BcbForeignParser, ProcreditbankParser, AvalParser, Centercredit, PrivatParser, UkrEximParser, VtbParser, AvangardParser, PaymentSystemParser
+from app.parsers import BcbParser, BcbForeignParser, ProcreditbankParser, AvalParser, Centercredit, PrivatParser, UkrEximParser, VtbParser, AvangardParser, PaymentSystemParser, OschadParser
 
 
 MAX_FILE_SIZE = 1024 * 1024 * 50 + 1
