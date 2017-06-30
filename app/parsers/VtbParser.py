@@ -4,7 +4,6 @@ import pandas as pd
 def file_parser(file):
     bank = 'VTB'
 
-
     VtbOpenFile = pd.read_excel(file).astype(str)
     VtbDataFrame = pd.DataFrame(VtbOpenFile)
     VtbFrameLan = len(VtbDataFrame[VtbDataFrame["БИК Банка получателя"].map(lambda x: 'nan'not in x)])

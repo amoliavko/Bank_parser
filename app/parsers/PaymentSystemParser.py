@@ -1,6 +1,7 @@
 import re
 import datetime as date
 
+
 def file_parser(file):
 
     bank = 'PaymentSystem'
@@ -51,11 +52,8 @@ def file_parser(file):
         for j in range(len(PaySystemList[i])):
             PaySystemList[i][j] = re.sub('\s+',' ',PaySystemList[i][j])
 
-
     openFile.close()
     return PaySystemList
-
-
 
 if __name__== '__main__':
     file = '/home/user/Playground/Projects/BankParser/Bank_parser/app/static/Платежные сисетмы.txt'

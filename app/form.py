@@ -1,17 +1,5 @@
-# from flask_wtf import FlaskForm
-# from wtforms import SelectField
-# from wtforms.validators import Required
-#
-#
-# class LoadFile(FlaskForm):
-#     bank_select = SelectField('Bank', validators=[Required()])
-
-
-
 from flask_wtf import FlaskForm
-from wtforms.fields.html5 import DateField
-from wtforms import StringField, SelectField
-from wtforms.validators import DataRequired, Required
+from wtforms import SelectField
 
 
 class LoadFile(FlaskForm):
