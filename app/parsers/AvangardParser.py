@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 
 
 def file_parser(file):
@@ -34,6 +35,12 @@ def file_parser(file):
         AvangardList[i].insert(0, bank)
         AvangardList[i].append(acc)
         AvangardList[i].insert(4, curr)
+
+    for i in range(len(AvangardList)):
+        search = re.search('ИНН (\d+)', str(AvangardList[i][6]))
+        if search:
+            search = search.groups()[0]
+            AvangardList[i].append(search)
 
     for i in range(len(AvangardList)):
         AvangardList[i][1] = AvangardList[i][1].split()[0]

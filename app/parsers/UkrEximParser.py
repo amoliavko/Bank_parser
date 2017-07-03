@@ -5,7 +5,7 @@ def file_parser(file):
     bank = 'UkrExim'
 
     UkrEximOpenFile = pd.read_excel(file).astype(str)
-    UkrEximDataFrame = pd.DataFrame(UkrEximOpenFile[['Дата транзакції', 'Дебет', 'Кредит', 'Валюта', 'Призначення платежу', 'Найменування кореспондента', 'Рахунок']])
+    UkrEximDataFrame = pd.DataFrame(UkrEximOpenFile[['Дата транзакції', 'Дебет', 'Кредит', 'Валюта', 'Призначення платежу', 'Найменування кореспондента', 'Рахунок', 'Код кореспондента']])
     UkrEximList = [list(x) for x in UkrEximDataFrame.to_records(index=False)]
 
     for i in range(len(UkrEximList)):

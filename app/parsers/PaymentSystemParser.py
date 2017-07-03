@@ -19,7 +19,7 @@ def file_parser(file):
 
         if account:
             acc = account.group(1)
-            print(acc)
+
         if end:
             PaySystemList.append(paymentList)
             break
@@ -46,6 +46,8 @@ def file_parser(file):
         PaySystemList[i].append(acc)
         PaySystemList[i].insert(4, curr)
 
+    openFile.close()
+
     for i in range(len(PaySystemList)):
         for j in range(2, 4):
             PaySystemList[i][j] = str(PaySystemList[i][j]).replace('.', ',')
@@ -57,7 +59,9 @@ def file_parser(file):
             if str(PaySystemList[i][j]) == 'nan':
                 PaySystemList[i][j] = '0,00'
 
-    openFile.close()
+    for i in range(len(PaySystemList)):
+        PaySystemList[i][5], PaySystemList[i][6] = PaySystemList[i][6], PaySystemList[i][5]
+
     return PaySystemList
 
 if __name__== '__main__':

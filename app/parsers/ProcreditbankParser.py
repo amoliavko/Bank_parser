@@ -5,7 +5,7 @@ def file_parser(file):
     bank = 'ProCredit'
 
     ProCreditOpenFile = pd.read_excel(file).astype(str)
-    ProCreditDataFrame = pd.DataFrame(ProCreditOpenFile[['Дата операцiї', 'Дебет', 'Кредит', 'Валюта', 'Призначення платежу', 'Кореспондент', 'Рахунок', 'ЄДРПОУ']])
+    ProCreditDataFrame = pd.DataFrame(ProCreditOpenFile[['Дата операцiї', 'Дебет', 'Кредит', 'Валюта', 'Призначення платежу', 'Кореспондент', 'Рахунок', 'ЄДРПОУ кореспондента']])
     ProCreditList = [list(x) for x in ProCreditDataFrame.to_records(index=False)]
 
 
