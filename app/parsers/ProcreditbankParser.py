@@ -14,8 +14,15 @@ def file_parser(file):
 
     for i in range(len(ProCreditList)):
         ProCreditList[i][1] = ProCreditList[i][1].split()[0]
+        for j in range(2, 4):
+            if str(ProCreditList[i][j]) == 'nan':
+                ProCreditList[i][j] = '0,00'
+            ProCreditList[i][j] = str(ProCreditList[i][j]).replace('.', ',')
+            ProCreditList[i][j] = str(ProCreditList[i][j]).replace('.', ',')
+
+    for i in range(len(ProCreditList)):
         for j in range(len(ProCreditList[i])):
             if str(ProCreditList[i][j]) == 'nan':
-                ProCreditList[i][j] = 0.0
+                ProCreditList[i][j] = ''
 
     return ProCreditList

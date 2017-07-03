@@ -75,7 +75,14 @@ def file_parser(file):
         TempList.append(i[0])
         OutOshchadList.append(TempList)
         TempList = []
+    
+    for i in range(len(OutOshchadList)):
+        for j in range(len(OutOshchadList[i])):
+            if str(OutOshchadList[i][j]) == 'nan':
+                OutOshchadList[i][j] = ''
 
-
+    for i in range(len(OutOshchadList)):
+        for j in range(2, 4):
+            OutOshchadList[i][j] = str(OutOshchadList[i][j]).replace('.', ',')
 
     return OutOshchadList

@@ -44,13 +44,18 @@ def file_parser(file):
     for i in range(len(PaySystemList)):
         PaySystemList[i].insert(0,bank)
         PaySystemList[i].append(acc)
-        PaySystemList[i].insert(4,curr)
+        PaySystemList[i].insert(4, curr)
 
     for i in range(len(PaySystemList)):
-        PaySystemList[i][2] = str(PaySystemList[i][2]).replace(',','.')
-        PaySystemList[i][3] = str(PaySystemList[i][3]).replace(',','.')
+        for j in range(2, 4):
+            PaySystemList[i][j] = str(PaySystemList[i][j]).replace('.', ',')
         for j in range(len(PaySystemList[i])):
-            PaySystemList[i][j] = re.sub('\s+',' ',PaySystemList[i][j])
+            PaySystemList[i][j] = re.sub('\s+', ' ', PaySystemList[i][j])
+
+    for i in range(len(PaySystemList)):
+        for j in range(len(PaySystemList[i])):
+            if str(PaySystemList[i][j]) == 'nan':
+                PaySystemList[i][j] = '0,00'
 
     openFile.close()
     return PaySystemList

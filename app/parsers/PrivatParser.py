@@ -10,11 +10,18 @@ def file_parser(file):
     PrivatList = [list(x) for x in PrivatDataFrame.to_records(index=False)]
 
     for i in range(len(PrivatList)):
-        PrivatList[i].insert(0,bank)
+        PrivatList[i].insert(0, bank)
 
     for i in range(len(PrivatList)):
         PrivatList[i][1] = PrivatList[i][1].split()[0]
+        for j in range(2, 4):
+            if str(PrivatList[i][j]) == 'nan':
+                PrivatList[i][j] = '0,00'
+            PrivatList[i][j] = str(PrivatList[i][j]).replace('.', ',')
+
+    for i in range(len(PrivatList)):
         for j in range(len(PrivatList[i])):
             if str(PrivatList[i][j]) == 'nan':
-                PrivatList[i][j] = 0.0
+                PrivatList[i][j] = ''
+
     return PrivatList

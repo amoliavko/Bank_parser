@@ -38,9 +38,16 @@ def file_parser(file):
         CentercreditList[i].insert(4,curr)
 
     for i in range(len(CentercreditList)):
+        for j in range(2, 4):
+            if str(CentercreditList[i][j]) == 'nan':
+                CentercreditList[i][j] = '0,00'
+            CentercreditList[i][j] = str(CentercreditList[i][j]).replace(',', '')
+            CentercreditList[i][j] = str(CentercreditList[i][j]).replace('.', ',')
+            CentercreditList[i][j] = str(CentercreditList[i][j]).replace('.', ',')
+            
+    for i in range(len(CentercreditList)):
         for j in range(len(CentercreditList[i])):
             if str(CentercreditList[i][j]) == 'nan':
-                CentercreditList[i][j] = 0.0
-            CentercreditList[i][j] = str(CentercreditList[i][j]).replace(',','')
+                CentercreditList[i][j] = ''
 
     return CentercreditList

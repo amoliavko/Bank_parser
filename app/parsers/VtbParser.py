@@ -14,12 +14,21 @@ def file_parser(file):
     for i in range(len(VtbList)):
         VtbList[i].append(acc)
         VtbList[i].insert(0, bank)
-        VtbList[i].insert(2, 0.00)
+        VtbList[i].insert(2, '0,00')
 
     for i in range(len(VtbList)):
         VtbList[i][1] = VtbList[i][1].split()[0]
+        for j in range(2, 4):
+            VtbList[i][j] = str(VtbList[i][j]).replace('.', ',')
+            if str(VtbList[i][j]) == 'nan':
+                VtbList[i][j] = '0,00'
+
+    for i in range(len(VtbList)):
         for j in range(len(VtbList[i])):
             if str(VtbList[i][j]) == 'nan':
-                VtbList[i][j] = 0.0
+                VtbList[i][j] = ''
+            if str(VtbList[i][j]) == 'RUR':
+                VtbList[i][j] = 'RUB'
+
 
     return VtbList

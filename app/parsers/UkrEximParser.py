@@ -12,8 +12,14 @@ def file_parser(file):
         UkrEximList[i].insert(0, bank)
 
     for i in range(len(UkrEximList)):
+        for j in range(2, 4):
+            if str(UkrEximList[i][j]) == 'nan':
+                UkrEximList[i][j] = '0,00'
+            UkrEximList[i][j] = str(UkrEximList[i][j]).replace('.', ',')
+                
+    for i in range(len(UkrEximList)):
         for j in range(len(UkrEximList[i])):
             if str(UkrEximList[i][j]) == 'nan':
-                UkrEximList[i][j] = 0.0
+                UkrEximList[i][j] = ''
 
     return UkrEximList

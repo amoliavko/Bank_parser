@@ -12,7 +12,7 @@ def file_parser(file):
 
 
     for i in range(len(AvalList)):
-        AvalList[i].insert(0,bank)
+        AvalList[i].insert(0, bank)
 
 
     for i in range(len(AvalList)):
@@ -21,6 +21,6 @@ def file_parser(file):
 
         for j in range(len(AvalList[i])):
             if str(AvalList[i][j]) == 'nan':
-                AvalList[i][j] = '0,0'
+                AvalList[i][j] = '0,00'
 
     return AvalList

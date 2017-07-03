@@ -48,4 +48,15 @@ def file_parser(file):
 
     BcbOpenFile.close()
 
+    for i in range(len(paymentList)):
+        for j in range(2, 4):
+            if str(paymentList[i][j]) == '':
+                paymentList[i][j] = '0,00'
+            paymentList[i][j] = str(paymentList[i][j]).replace('.', ',')
+
+    for i in range(len(paymentList)):
+        for j in range(len(paymentList[i])):
+            if str(paymentList[i][j]) == 'nan':
+                paymentList[i][j] = ''
+
     return paymentList
